@@ -10,8 +10,7 @@ import {
   where, 
   orderBy 
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, storage } from './config';
+import { db } from './config';
 
 // Books service for Firestore
 export const booksService = {
@@ -40,10 +39,10 @@ export const booksService = {
   async getActiveBooks() {
     try {
       const booksRef = collection(db, 'books');
+      // Geçici olarak sadece status filtresini kullanalım
       const q = query(
         booksRef, 
-        where('status', '==', 'active'),
-        orderBy('uploadDate', 'desc')
+        where('status', '==', 'active')
       );
       const querySnapshot = await getDocs(q);
       
@@ -132,19 +131,37 @@ export const booksService = {
     }
   },
 
-  // Upload file to Firebase Storage
-  async uploadFile(file, fileName) {
-    try {
-      const storageRef = ref(storage, `books/${fileName}`);
-      const snapshot = await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(snapshot.ref);
-      
-      return { success: true, downloadURL };
-    } catch (error) {
-      return { 
-        success: false, 
-        error: error.message 
-      };
+  // Upload file to Cloudinary
+  // Upload file to Cloudinary
+async uploadFile(file, fileName) {
+  try {
+    const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+    const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+    const formData = new FormData();
+
+    formData.append('file', file);
+    formData.append('upload_preset', uploadPreset);
+    formData.append('folder', 'books');
+    // Eğer özel bir public_id gerekiyorsa burada kullan
+    formData.append('public_id', 'abface12-f9f4-43cd-ae4d-c2d64617bee8');
+
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`, {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      throw new Error(data.error.message);
     }
+
+    return { success: true, downloadURL: data.secure_url };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message
+    };
   }
+}
 }; 

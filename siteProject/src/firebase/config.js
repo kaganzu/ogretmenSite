@@ -1,18 +1,18 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
 
 // Your Firebase configuration
 // You'll need to replace these with your actual Firebase project credentials
 // For production, use environment variables: VITE_FIREBASE_*
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "your-api-key",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "your-project-id.firebaseapp.com",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "your-project-id",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "your-project-id.appspot.com",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "your-messaging-sender-id",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "your-app-id"
+  apiKey: "AIzaSyDJkOJW0eRJnH6ytTVp3EsYEfyBy2TmQp4",
+  authDomain: "babamsite-fe51d.firebaseapp.com",
+  projectId: "babamsite-fe51d",
+  storageBucket: "babamsite-fe51d.appspot.com",
+  messagingSenderId: "623565355193",
+  appId: "1:623565355193:web:53d15e6d5b8357a7b20368",
+  measurementId: "G-HR2SXF65X7"
 };
 
 // Initialize Firebase
@@ -21,6 +21,5 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase services
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-export const storage = getStorage(app);
 
-export default app; 
+export default app;

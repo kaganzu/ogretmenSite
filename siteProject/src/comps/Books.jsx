@@ -110,17 +110,15 @@ const Books = () => {
       
       // Dosya indirme
       if (book.fileURL) {
-        // Firebase Storage'dan dosyayı indir
         const link = document.createElement('a');
         link.href = book.fileURL;
-        link.download = `${book.title}.pdf`;
-        link.target = '_blank';
+        link.setAttribute('download', `${book.title}.pdf`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         
         // Başarı mesajı
-        alert(`${book.title} başarıyla indirildi!`);
+        alert(`${book.title} indiriliyor...`);
       } else {
         // Eski kitaplar için fallback
         const link = document.createElement('a');

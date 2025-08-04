@@ -3,21 +3,19 @@ export const cloudinaryService = {
   // Upload file to Cloudinary
   async uploadFile(file) {
     try {
-      // Cloudinary configuration - you'll need to replace these with your actual values
-      const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/upload';
-      const CLOUDINARY_PRESET = 'YOUR_UPLOAD_PRESET';
-      
-      // For now, using environment variables (you'll set these later)
-      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || 'YOUR_CLOUD_NAME';
-      const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET || 'YOUR_UPLOAD_PRESET';
-      
+
+      // Cloudinary configuration
+      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+      const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+      const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`;
+
       const formData = new FormData();
       formData.append('file', file);
       formData.append('upload_preset', uploadPreset);
       formData.append('resource_type', 'raw'); // For PDF files
       formData.append('folder', 'books'); // Organize files in a folder
 
-      const response = await fetch(CLOUDINARY_URL.replace('YOUR_CLOUD_NAME', cloudName), {
+      const response = await fetch(CLOUDINARY_URL, {
         method: 'POST',
         body: formData
       });

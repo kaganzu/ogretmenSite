@@ -94,9 +94,13 @@ const Admin = () => {
     setUploadStatus('');
 
     try {
-      // Dosyayı Firebase Storage'a yükle
+      console.log('Yükleme başlıyor:', newBook); // Debug için eklendi
+      
+      // Dosyayı Cloudinary'ye yükle
       const fileName = `${Date.now()}_${newBook.file.name}`;
+      console.log('Cloudinary yüklemesi başlıyor...'); // Debug için eklendi
       const uploadResult = await booksService.uploadFile(newBook.file, fileName);
+      console.log('Cloudinary sonucu:', uploadResult); // Debug için eklendi
       
       if (!uploadResult.success) {
         throw new Error(uploadResult.error);
@@ -112,6 +116,8 @@ const Admin = () => {
         fileURL: uploadResult.downloadURL,
         fileName: fileName
       };
+      
+      console.log('Firestore\'a kaydedilecek veri:', bookData); // Debug için eklendi
 
       const addResult = await booksService.addBook(bookData);
       
