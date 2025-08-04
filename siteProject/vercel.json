@@ -4,27 +4,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "routes": [
-    {
-      "src": "/admin",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/admin-login",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/about",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/books",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/contact",
-      "dest": "/index.html"
-    }
   ]
 } 
