@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { authService } from '../firebase/authService';
 import './AdminLogin.css';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: ''
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   
   const navigate = useNavigate();
-
-  // Güvenli admin bilgileri (gerçek uygulamada backend'de saklanmalı)
-  const ADMIN_CREDENTIALS = {
-    username: 'admin',
-    password: 'matematik2024!' // Güçlü şifre
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,21 +27,20 @@ const AdminLogin = () => {
     setIsLoading(true);
     setError('');
 
-    // Simulate API call delay
-    setTimeout(() => {
-      if (credentials.username === ADMIN_CREDENTIALS.username && 
-          credentials.password === ADMIN_CREDENTIALS.password) {
-        
-        // Başarılı giriş - session storage'a kaydet
-        sessionStorage.setItem('adminAuthenticated', 'true');
-        sessionStorage.setItem('adminLoginTime', new Date().toISOString());
-        
+    try {
+      const result = await authService.login(credentials.email, credentials.password);
+      
+      if (result.success) {
+        // Başarılı giriş
         navigate('/admin');
       } else {
-        setError('Kullanıcı adı veya şifre hatalı!');
+        setError('E-posta veya şifre hatalı!');
       }
+    } catch (error) {
+      setError('Giriş yapılırken bir hata oluştu!');
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -66,16 +60,16 @@ const AdminLogin = () => {
 
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="username">Kullanıcı Adı</label>
+              <label htmlFor="email">E-posta</label>
               <input
-                type="text"
-                id="username"
-                name="username"
-                value={credentials.username}
+                type="email"
+                id="email"
+                name="email"
+                value={credentials.email}
                 onChange={handleInputChange}
-                placeholder="Kullanıcı adınızı girin"
+                placeholder="E-posta adresinizi girin"
                 required
-                autoComplete="username"
+                autoComplete="email"
               />
             </div>
 

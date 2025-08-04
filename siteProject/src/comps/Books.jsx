@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { booksService } from '../firebase/booksService';
 import './Books.css';
 
 const Books = () => {
@@ -71,28 +72,19 @@ const Books = () => {
   ];
 
   useEffect(() => {
-    // localStorage'dan kitapları yükle
-    const savedBooks = localStorage.getItem('books');
-    if (savedBooks) {
-      setBooks(JSON.parse(savedBooks));
-    } else {
-      // İlk kez çalıştırılıyorsa örnek kitapları kaydet
-      localStorage.setItem('books', JSON.stringify(sampleBooks));
-      setBooks(sampleBooks);
-    }
-  }, []);
-
-  // localStorage'daki değişiklikleri dinle
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const savedBooks = localStorage.getItem('books');
-      if (savedBooks) {
-        setBooks(JSON.parse(savedBooks));
+    // Firebase'den kitapları yükle
+    const loadBooks = async () => {
+      const result = await booksService.getActiveBooks();
+      if (result.success) {
+        setBooks(result.books);
+      } else {
+        console.error('Kitaplar yüklenirken hata:', result.error);
+        // Fallback olarak örnek kitapları göster
+        setBooks(sampleBooks);
       }
     };
-
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
+    
+    loadBooks();
   }, []);
 
   // Sadece aktif kitapları filtrele
@@ -105,36 +97,44 @@ const Books = () => {
     return matchesFilter && matchesSearch;
   });
 
-  const handleDownload = (book) => {
-    // İndirme sayısını artır
-    const updatedBooks = books.map(b => 
-      b.id === book.id ? { ...b, downloads: b.downloads + 1 } : b
-    );
-    setBooks(updatedBooks);
-    localStorage.setItem('books', JSON.stringify(updatedBooks));
-    
-    // Gerçek dosya indirme
-    if (book.fileData) {
-      // Base64 dosya verisini kullan
-      const link = document.createElement('a');
-      link.href = book.fileData;
-      link.download = `${book.title}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+  const handleDownload = async (book) => {
+    try {
+      // İndirme sayısını Firebase'de güncelle
+      await booksService.updateBookDownloads(book.id);
       
-      // Başarı mesajı
-      alert(`${book.title} başarıyla indirildi!`);
-    } else {
-      // Eski kitaplar için fallback
-      const link = document.createElement('a');
-      link.href = `data:application/pdf;base64,JVBERi0xLjQKJcOkw7zDtsO8DQoxIDAgb2JqDQo8PA0KL1R5cGUgL0NhdGFsb2cNCi9QYWdlcyAyIDAgUg0KPj4NCmVuZG9iag0KMiAwIG9iag0KPDwNCi9UeXBlIC9QYWdlcw0KL0NvdW50IDENCi9LaWRzIFsgMyAwIFIgXQ0KPj4NCmVuZG9iag0KMyAwIG9iag0KPDwNCi9UeXBlIC9QYWdlcw0KL01lZGlhQm94IFsgMCAwIDU5NSA4NDIgXQ0KL1Jlc291cmNlcyA8PA0KL0ZvbnQgPDwNCi9GMSA0IDAgUg0KPj4NCi9FeHRHU3RhdGUgPDwNCi9HUzEgNSAwIFINCj4+DQo+Pg0KL0NvbnRlbnRzIDYgMCBSDQovUGFyZW50IDIgMCBSDQo+Pg0KZW5kb2JqDQo0IDAgb2JqDQo8PA0KL1R5cGUgL0ZvbnQNCi9TdWJ0eXBlIC9UeXBlMQ0KL0Jhc2VGb250IC9IZWx2ZXRpY2ENCi9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nDQo+Pg0KZW5kb2JqDQo1IDAgb2JqDQo8PA0KL1R5cGUgL0V4dEdTdGF0ZQ0KL0JNIC9Ob3JtYWwNCi9DQSAxDQo+Pg0KZW5kb2JqDQo2IDAgb2JqDQo8PA0KL0xlbmd0aCAxNQ0KPj4NCnN0cmVhbQ0KQlQNCjcwIDUwIFRECi9GMSAxMiBUZgooSGVsbG8gV29ybGQpIFRqCkVUCmVuZHN0cmVhbQ0KZW5kb2JqDQp4cmVmDQowIDcNCjAwMDAwMDAwMDAgNjU1MzUgZiANCjAwMDAwMDAwMTAgMDAwMDAgbg0KMDAwMDAwMDA3OSAwMDAwMCBuDQowMDAwMDAwMTczIDAwMDAwIG4NCjAwMDAwMDAzMDEgMDAwMDAgbg0KMDAwMDAwMDM4MCAwMDAwMCBuDQowMDAwMDAwNDIwIDAwMDAwIG4NCnRyYWlsZXINCjw8DQovU2l6ZSA3DQovUm9vdCAxIDAgUg0KL0luZm8gOCAwIFINCj4+DQpzdGFydHhyZWYNCjQ5Mg0KJSVFT0Y=`;
-      link.download = `${book.title}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      // Yerel state'i güncelle
+      const updatedBooks = books.map(b => 
+        b.id === book.id ? { ...b, downloads: b.downloads + 1 } : b
+      );
+      setBooks(updatedBooks);
       
-      alert(`${book.title} indiriliyor... (Demo dosya)`);
+      // Dosya indirme
+      if (book.fileURL) {
+        // Firebase Storage'dan dosyayı indir
+        const link = document.createElement('a');
+        link.href = book.fileURL;
+        link.download = `${book.title}.pdf`;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Başarı mesajı
+        alert(`${book.title} başarıyla indirildi!`);
+      } else {
+        // Eski kitaplar için fallback
+        const link = document.createElement('a');
+        link.href = `data:application/pdf;base64,JVBERi0xLjQKJcOkw7zDtsO8DQoxIDAgb2JqDQo8PA0KL1R5cGUgL0NhdGFsb2cNCi9QYWdlcyAyIDAgUg0KPj4NCmVuZG9iag0KMiAwIG9iag0KPDwNCi9UeXBlIC9QYWdlcw0KL0NvdW50IDENCi9LaWRzIFsgMyAwIFIgXQ0KPj4NCmVuZG9iag0KMyAwIG9iag0KPDwNCi9UeXBlIC9QYWdlcw0KL01lZGlhQm94IFsgMCAwIDU5NSA4NDIgXQ0KL1Jlc291cmNlcyA8PA0KL0ZvbnQgPDwNCi9GMSA0IDAgUg0KPj4NCi9FeHRHU3RhdGUgPDwNCi9HUzEgNSAwIFINCj4+DQo+Pg0KL0NvbnRlbnRzIDYgMCBSDQovUGFyZW50IDIgMCBSDQo+Pg0KZW5kb2JqDQo0IDAgb2JqDQo8PA0KL1R5cGUgL0ZvbnQNCi9TdWJ0eXBlIC9UeXBlMQ0KL0Jhc2VGb250IC9IZWx2ZXRpY2ENCi9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nDQo+Pg0KZW5kb2JqDQo1IDAgb2JqDQo8PA0KL1R5cGUgL0V4dEdTdGF0ZQ0KL0JNIC9Ob3JtYWwNCi9DQSAxDQo+Pg0KZW5kb2JqDQo2IDAgb2JqDQo8PA0KL0xlbmd0aCAxNQ0KPj4NCnN0cmVhbQ0KQlQNCjcwIDUwIFRECi9GMSAxMiBUZgooSGVsbG8gV29ybGQpIFRqCkVUCmVuZHN0cmVhbQ0KZW5kb2JqDQp4cmVmDQowIDcNCjAwMDAwMDAwMDAgNjU1MzUgZiANCjAwMDAwMDAwMTAgMDAwMDAgbg0KMDAwMDAwMDA3OSAwMDAwMCBuDQowMDAwMDAwMTczIDAwMDAwIG4NCjAwMDAwMDAzMDEgMDAwMDAgbg0KMDAwMDAwMDM4MCAwMDAwMCBuDQowMDAwMDAwNDIwIDAwMDAwIG4NCnRyYWlsZXINCjw8DQovU2l6ZSA3DQovUm9vdCAxIDAgUg0KL0luZm8gOCAwIFINCj4+DQpzdGFydHhyZWYNCjQ5Mg0KJSVFT0Y=`;
+        link.download = `${book.title}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        alert(`${book.title} indiriliyor... (Demo dosya)`);
+      }
+    } catch (error) {
+      console.error('İndirme hatası:', error);
+      alert('Dosya indirilirken bir hata oluştu!');
     }
   };
 

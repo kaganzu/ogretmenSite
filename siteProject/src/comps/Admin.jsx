@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { authService } from '../firebase/authService';
+import { booksService } from '../firebase/booksService';
 import './Admin.css';
 
 const Admin = () => {
@@ -17,25 +19,13 @@ const Admin = () => {
 
   // Güvenlik kontrolü
   useEffect(() => {
-    const isAuthenticated = sessionStorage.getItem('adminAuthenticated');
-    const loginTime = sessionStorage.getItem('adminLoginTime');
-    
-    if (!isAuthenticated || !loginTime) {
-      navigate('/admin-login');
-      return;
-    }
+    const unsubscribe = authService.onAuthStateChange((user) => {
+      if (!user) {
+        navigate('/admin-login');
+      }
+    });
 
-    // 8 saat sonra otomatik çıkış
-    const loginDate = new Date(loginTime);
-    const currentDate = new Date();
-    const hoursDiff = (currentDate - loginDate) / (1000 * 60 * 60);
-    
-    if (hoursDiff > 8) {
-      sessionStorage.removeItem('adminAuthenticated');
-      sessionStorage.removeItem('adminLoginTime');
-      navigate('/admin-login');
-      return;
-    }
+    return () => unsubscribe();
   }, [navigate]);
 
   // Örnek veri
@@ -54,20 +44,21 @@ const Admin = () => {
   ];
 
   useEffect(() => {
-    // localStorage'dan kitapları yükle
-    const savedBooks = localStorage.getItem('books');
-    if (savedBooks) {
-      setBooks(JSON.parse(savedBooks));
-    } else {
-      // İlk kez çalıştırılıyorsa örnek kitapları kaydet
-      localStorage.setItem('books', JSON.stringify(sampleBooks));
-      setBooks(sampleBooks);
-    }
+    // Firebase'den kitapları yükle
+    const loadBooks = async () => {
+      const result = await booksService.getAllBooks();
+      if (result.success) {
+        setBooks(result.books);
+      } else {
+        console.error('Kitaplar yüklenirken hata:', result.error);
+      }
+    };
+    
+    loadBooks();
   }, []);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('adminAuthenticated');
-    sessionStorage.removeItem('adminLoginTime');
+  const handleLogout = async () => {
+    await authService.logout();
     navigate('/admin-login');
   };
 
@@ -102,41 +93,54 @@ const Admin = () => {
     setIsUploading(true);
     setUploadStatus('');
 
-    // Dosyayı base64'e çevir
-    const reader = new FileReader();
-    reader.onload = () => {
-      const uploadedBook = {
-        id: Date.now(), // Benzersiz ID
+    try {
+      // Dosyayı Firebase Storage'a yükle
+      const fileName = `${Date.now()}_${newBook.file.name}`;
+      const uploadResult = await booksService.uploadFile(newBook.file, fileName);
+      
+      if (!uploadResult.success) {
+        throw new Error(uploadResult.error);
+      }
+
+      // Kitap verilerini Firestore'a kaydet
+      const bookData = {
         title: newBook.title,
         category: newBook.category,
         description: newBook.description,
         fileSize: `${(newBook.file.size / 1024 / 1024).toFixed(1)} MB`,
-        uploadDate: new Date().toISOString().split('T')[0],
-        downloads: 0,
-        status: 'active',
         thumbnail: getThumbnailForCategory(newBook.category),
-        fileData: reader.result // Base64 dosya verisi
+        fileURL: uploadResult.downloadURL,
+        fileName: fileName
       };
 
-      const updatedBooks = [...books, uploadedBook];
-      setBooks(updatedBooks);
-      localStorage.setItem('books', JSON.stringify(updatedBooks));
+      const addResult = await booksService.addBook(bookData);
       
-      setNewBook({
-        title: '',
-        category: 'lise',
-        description: '',
-        file: null
-      });
-      
+      if (addResult.success) {
+        // Kitapları yeniden yükle
+        const loadResult = await booksService.getAllBooks();
+        if (loadResult.success) {
+          setBooks(loadResult.books);
+        }
+        
+        setNewBook({
+          title: '',
+          category: 'lise',
+          description: '',
+          file: null
+        });
+        
+        setUploadStatus('success');
+      } else {
+        throw new Error(addResult.error);
+      }
+    } catch (error) {
+      console.error('Kitap yüklenirken hata:', error);
+      setUploadStatus('error');
+    } finally {
       setIsUploading(false);
-      setUploadStatus('success');
-      
       // Reset status after 3 seconds
       setTimeout(() => setUploadStatus(''), 3000);
-    };
-
-    reader.readAsDataURL(newBook.file);
+    }
   };
 
   const getThumbnailForCategory = (category) => {
