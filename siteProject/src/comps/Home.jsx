@@ -41,7 +41,7 @@ const Home = () => {
             <div className="service-card">
               <div className="service-icon">📚</div>
               <h3>Özel Dersler</h3>
-              <p>Birebir veya küçük gruplar halinde matematik özel dersleri</p>
+              <p>Birebir eya küçük gruplar halinde matematik özel dersleri</p>
             </div>
             <div className="service-card">
               <div className="service-icon">🎥</div>
