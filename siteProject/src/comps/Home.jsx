@@ -63,34 +63,7 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="testimonials">
-        <div className="container">
-          <h2 className="section-title">Öğrenci Yorumları</h2>
-          <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <p>"Ahmet Hoca sayesinde matematiği sevmeye başladım. Artık formülleri ezberlemek yerine anlıyorum."</p>
-              <div className="testimonial-author">
-                <strong>Ayşe K.</strong>
-                <span>12. Sınıf Öğrencisi</span>
-              </div>
-            </div>
-            <div className="testimonial-card">
-              <p>"Olimpiyat sınavında birinci oldum. Ahmet Hoca'nın özel programı gerçekten çok etkiliydi."</p>
-              <div className="testimonial-author">
-                <strong>Mehmet A.</strong>
-                <span>Olimpiyat Birincisi</span>
-              </div>
-            </div>
-            <div className="testimonial-card">
-              <p>"Üniversite sınavında matematikten 40 soruda 38 doğru yaptım. Teşekkürler Ahmet Hoca!"</p>
-              <div className="testimonial-author">
-                <strong>Zeynep B.</strong>
-                <span>Üniversite Öğrencisi</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 };
