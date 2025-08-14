@@ -12,7 +12,9 @@ const Home = () => {
               Matematik Öğretmeni
             </h1>
             <p className="hero-subtitle">
-              25 yıllık deneyimle matematik öğrenmeyi kolaylaştırıyorum
+              25 yıllık deneyimle matematik öğrenmeyi kolaylaştırıyorum.
+              Her seviyeden öğrenciye özel, anlaşılır ve kalıcı öğrenme deneyimi sunuyorum.
+
             </p>
             <div className="hero-stats">
               <div className="stat">
@@ -22,8 +24,27 @@ const Home = () => {
               <div className="stat">
                 <span className="stat-number">500+</span>
                 <span className="stat-label">Öğrenci</span>
-              </div>
+              </div> 
             </div>
+          </div>
+            <div className="hero-text">
+            <h1 className="hero-title-2">
+              Matematikte Başarı Arttırıcı Stratejiler
+            </h1>
+            <p className="hero-subtitle">
+              25 yılda 600 üzeri öğrenciye matematik eğitimi verdim.
+              Kişiye özel çalışma planı ve haftalık geri bildirimleriyle başarıyı garantiliyorum.
+            </p>
+            <div className="hero-stats">
+            <div className="stat">
+                <span className="stat-number">&nbsp;</span>
+                <span className="stat-label">&nbsp;</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number">&nbsp;</span>
+                <span className="stat-label">&nbsp;</span>
+              </div> 
+              </div>
           </div>
         </div>
       </section>
