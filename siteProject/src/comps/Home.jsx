@@ -28,13 +28,7 @@ const Home = () => {
           </div>
           <div className="hero-image">
             <img 
-              src="/images.jpg" 
-              alt="Ahmet İdilman"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/fallback-image.jpg';
-              }} 
-            />
+              src="/src/assets/images.jpg" />
           </div>
         </div>
       </section>
