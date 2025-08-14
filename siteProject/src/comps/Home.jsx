@@ -1,6 +1,5 @@
 import React from 'react';
 import './Home.css';
-import profileImg from '../assets/images.jpg';
 
 const Home = () => {
   return (
@@ -28,7 +27,14 @@ const Home = () => {
             </div>
           </div>
           <div className="hero-image">
-            <img src={profileImg} alt="Ahmet İdilman" />
+            <img 
+              src="/images.jpg" 
+              alt="Ahmet İdilman"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = '/fallback-image.jpg';
+              }} 
+            />
           </div>
         </div>
       </section>
@@ -68,4 +74,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;
