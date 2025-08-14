@@ -10,10 +10,9 @@ const Home = () => {
           <div className="hero-text">
             <h1 className="hero-title">
               Matematik Öğretmeni
-              <span className="highlight"> Ahmet İdilman</span>
             </h1>
             <p className="hero-subtitle">
-              20 yıllık deneyimle matematik öğrenmeyi kolaylaştırıyorum
+              25 yıllık deneyimle matematik öğrenmeyi kolaylaştırıyorum
             </p>
             <div className="hero-stats">
               <div className="stat">
@@ -26,10 +25,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="hero-image">
-            <img 
-              src={profileImg} />
-          </div>
         </div>
       </section>
 
@@ -40,7 +35,7 @@ const Home = () => {
             <div className="service-card">
               <div className="service-icon">📚</div>
               <h3>Özel Dersler</h3>
-              <p>Birebir eya küçük gruplar halinde matematik özel dersleri</p>
+              <p>Birebir veya grup halinde matematik özel dersleri</p>
             </div>
             <div className="service-card">
               <div className="service-icon">🎥</div>
