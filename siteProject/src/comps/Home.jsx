@@ -31,9 +31,9 @@ const Home = () => {
             <h1 className="hero-title-2">
               Matematikte Başarı Arttırıcı Stratejiler
             </h1>
-            <p className="hero-subtitle">
+            <p className="hero-subtitle-2">
               25 yılda 600 üzeri öğrenciye matematik eğitimi verdim.
-              Kişiye özel çalışma planı ve haftalık geri bildirimleriyle başarıyı garantiliyorum.
+                Herkese kişiye özel çalışma planı ve haftalık geri bildirimleriyle başarıyı garantiliyorum.
             </p>
             <div className="hero-stats">
             <div className="stat">
