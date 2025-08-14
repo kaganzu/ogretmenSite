@@ -18,21 +18,13 @@ const Home = () => {
             </p>
             <div className="hero-stats">
               <div className="stat">
-                <span className="stat-number">20+</span>
+                <span className="stat-number">25+</span>
                 <span className="stat-label">Yıl Deneyim</span>
               </div>
               <div className="stat">
                 <span className="stat-number">500+</span>
                 <span className="stat-label">Öğrenci</span>
               </div>
-              <div className="stat">
-                <span className="stat-number">95%</span>
-                <span className="stat-label">Başarı Oranı</span>
-              </div>
-            </div>
-            <div className="hero-buttons">
-              <a href="/about" className="btn btn-primary">Hakkımda</a>
-              <a href="/contact" className="btn btn-secondary">İletişim</a>
             </div>
           </div>
           <div className="hero-image">
@@ -53,8 +45,8 @@ const Home = () => {
             </div>
             <div className="service-card">
               <div className="service-icon">🎥</div>
-              <h3>Video Dersler</h3>
-              <p>Konu anlatım videoları ve çözüm teknikleri</p>
+              <h3>Canlı Dersler</h3>
+              <p>Konu anlatım dersleri ve çözüm teknikleri</p>
             </div>
             <div className="service-card">
               <div className="service-icon">📝</div>
@@ -63,8 +55,8 @@ const Home = () => {
             </div>
             <div className="service-card">
               <div className="service-icon">🏆</div>
-              <h3>Olimpiyat Hazırlık</h3>
-              <p>Matematik olimpiyatlarına özel hazırlık programları</p>
+              <h3>Sınava Hazırlık</h3>
+              <p>Sınavlara özel hazırlık dersleri</p>
             </div>
           </div>
         </div>
