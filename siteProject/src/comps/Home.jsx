@@ -33,7 +33,34 @@ const Home = () => {
         </div>
       </section>
 
-      
+      {/* Services Section */}
+      <section className="services">
+        <div className="container">
+          <h2 className="section-title">Hizmetlerim</h2>
+          <div className="services-grid">
+            <div className="service-card">
+              <div className="service-icon">📚</div>
+              <h3>Özel Dersler</h3>
+              <p>Birebir veya küçük gruplar halinde matematik özel dersleri</p>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">🎥</div>
+              <h3>Canlı Dersler</h3>
+              <p>Konu anlatım dersleri ve çözüm teknikleri</p>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">📝</div>
+              <h3>PDF Notlar</h3>
+              <p>Detaylı konu özetleri ve soru çözümleri</p>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">🏆</div>
+              <h3>Sınava Hazırlık</h3>
+              <p>Sınavlara özel hazırlık dersleri</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Testimonials Section */}
       
