@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css';
-
+import profileImg from '../assets/images.jpg';
 const Home = () => {
   return (
     <div className="home">
@@ -28,7 +28,7 @@ const Home = () => {
           </div>
           <div className="hero-image">
             <img 
-              src="/src/assets/images.jpg" />
+              src={profileImg} />
           </div>
         </div>
       </section>
@@ -36,7 +36,6 @@ const Home = () => {
       {/* Services Section */}
       <section className="services">
         <div className="container">
-          <h2 className="section-title">Hizmetlerim</h2>
           <div className="services-grid">
             <div className="service-card">
               <div className="service-icon">📚</div>
