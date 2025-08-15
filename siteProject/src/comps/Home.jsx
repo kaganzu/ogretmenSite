@@ -35,7 +35,7 @@ const Home = () => {
               <li>25 yılda 200'den fazla öğrenciyle birebir ders.</li>
               <li>Kişiye özel çalışma planı ve haftalık geri bildirim.</li>
               <li>LGS / TYT-AYT / Okula Destek</li>
-              <li>Ücretsiz tanışma dersi.</li>
+              <li>Online tanışma dersi.</li>
             </ul>
             
 
