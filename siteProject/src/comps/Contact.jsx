@@ -78,8 +78,8 @@ function Contact() {
               <div className="contact-icon">📧</div>
               <h3>E-posta</h3>
               <p>Detaylı bilgi için e-posta gönderin</p>
-              <a href="mailto:kimiraiko@gmail.com" className="contact-link">
-                kimiraiko@gmail.com
+              <a href="mailto:idilman@hotmail.com" className="contact-link">
+                idilman@hotmail.com
               </a>
             </div>
 

@@ -9,7 +9,7 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              Matematik Öğretmeni
+                Deneyimli Matematik Öğretmeni
             </h1>
             <p className="hero-subtitle">
               25 yıllık deneyimle matematik öğrenmeyi kolaylaştırıyorum.
@@ -19,11 +19,11 @@ const Home = () => {
             <div className="hero-stats">
               <div className="stat">
                 <span className="stat-number">25+</span>
-                <span className="stat-label">Yıl Deneyim</span>
+                <span className="stat-label"> Yıl Deneyim</span>
               </div>
               <div className="stat">
-                <span className="stat-number">500+</span>
-                <span className="stat-label">Öğrenci</span>
+                <span className="stat-number">200+</span>
+                <span className="stat-label"> Öğrenci</span>
               </div> 
             </div>
           </div>
@@ -31,13 +31,16 @@ const Home = () => {
             <h1 className="hero-title-2">
               Başarı Arttırıcı Stratejiler
             </h1>
-            <p className="hero-subtitle-2">
-              25 yılda 600 üzeri öğrenciye matematik eğitimi verdim.
-                Herkese kişiye özel çalışma planı ve haftalık geri bildirimleriyle başarıyı garantiliyorum.
-            </p>
+            <ul className="hero-subtitle-2">
+              <li>25 yılda 200'den fazla öğrenciyle birebir ders.</li>
+              <li>Kişiye özel çalışma planı ve haftalık geri bildirim.</li>
+              <li>LGS / TYT-AYT / Okula Destek</li>
+              <li>Ücretsiz tanışma dersi.</li>
+            </ul>
+
             <div className="hero-stats">
             <div className="stat">
-                <span className="stat-number">&nbsp;</span>
+                <span className="hero-subtitle">&nbsp;</span>
                 <span className="stat-label">&nbsp;</span>
               </div>
               <div className="stat">
@@ -56,7 +59,7 @@ const Home = () => {
             <div className="service-card">
               <div className="service-icon">📚</div>
               <h3>Özel Dersler</h3>
-              <p>Birebir veya grup halinde matematik özel dersleri</p>
+              <p>Birebir veya grup dersleri</p>
             </div>
             <div className="service-card">
               <div className="service-icon">🎥</div>
