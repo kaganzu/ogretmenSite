@@ -9,7 +9,7 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-                Deneyimli Matematik Öğretmeni
+                Matematikte Başarı Doğru Yöntemle Mümkün!
             </h1>
             <p className="hero-subtitle">
               25 yıllık deneyimle matematik öğrenmeyi kolaylaştırıyorum.
@@ -37,6 +37,7 @@ const Home = () => {
               <li>LGS / TYT-AYT / Okula Destek</li>
               <li>Ücretsiz tanışma dersi.</li>
             </ul>
+            
 
             <div className="hero-stats">
             <div className="stat">

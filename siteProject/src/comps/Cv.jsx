@@ -15,8 +15,11 @@ const AboutMe = () => {
               <h1>Ahmet İdilman</h1>
               <h2>Matematik Öğretmeni</h2>
               <p className="about-intro">
-                20 yıldır lise ve üniversiteye hazırlık düzeyinde matematik eğitimi veriyorum. 
-                Amacım öğrencilerime sadece formül ezberletmek değil, matematiği anlamalarını sağlamak.
+                Ankara Üniversitesi'nden mezun olduktan sonra akademik yolculuğuma Çukurova Üniversitesi'nde tezli yüksek lisans programı
+                 ile devam ettim. Kariyerim boyunca özel öğretim kurumlarında ve devlet okullarında matematik öğretmeni olarak görev aldım.
+                  Her seviyedeki öğrenciye, onların bireysel ihtiyaçlarını merkeze alan bir eğitim anlayışıyla derslerimi sürdürmekteyim. 
+                  Alanımdaki güncelliği korumak adına, sürekli değişen eğitim müfredatını ve yeni nesil soru yaklaşımlarını takip etmeyi 
+                  en temel mesleki ilke olarak benimsemekteyim.
               </p>
             </div>
           </div>
