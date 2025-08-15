@@ -9,7 +9,7 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-                Matematikte Başarı Doğru Yöntemle Mümkün!
+                "Matematikte Başarı Doğru Yöntemle Mümkün!"
             </h1>
             <p className="hero-subtitle">
               25 yıllık deneyimle matematik öğrenmeyi kolaylaştırıyorum.
