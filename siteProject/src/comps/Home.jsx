@@ -29,7 +29,7 @@ const Home = () => {
           </div>
             <div className="hero-text">
             <h1 className="hero-title-2">
-              Matematikte Başarı Arttırıcı Stratejiler
+              Başarı Arttırıcı Stratejiler
             </h1>
             <p className="hero-subtitle-2">
               25 yılda 600 üzeri öğrenciye matematik eğitimi verdim.
