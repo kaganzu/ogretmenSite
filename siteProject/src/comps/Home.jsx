@@ -70,7 +70,7 @@ const Home = () => {
             <div className="service-card">
               <div className="service-icon">📝</div>
               <h3>PDF Notlar</h3>
-              <p>Detaylı konu özetleri ve soru çözümleri</p>
+              <p>Güncel müfredata uygun dökümanlar</p>
             </div>
             <div className="service-card">
               <div className="service-icon">🏆</div>
