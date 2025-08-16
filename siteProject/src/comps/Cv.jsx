@@ -32,8 +32,8 @@ const AboutMe = () => {
             <div className="detail-card">
               <h3>📚 Eğitim</h3>
               <ul>
-                <li>Matematik Öğretmenliği - Boğaziçi Üniversitesi</li>
-                <li>Matematik Yüksek Lisansı - İTÜ</li>
+                <li>Matematik Lisans - Ankara Üniversitesi</li>
+                <li>Tezli Yüksek Lisans - Çukurova Üniversitesi</li>
                 <li>Pedagojik Formasyon Sertifikası</li>
               </ul>
             </div>
@@ -41,10 +41,9 @@ const AboutMe = () => {
             <div className="detail-card">
               <h3>🏆 Başarılar</h3>
               <ul>
-                <li>Aydın Matematik Olimpiyatları - 4 öğrenci hazırladım</li>
-                <li>Birincilik elde ettik</li>
-                <li>500+ öğrenci mezun ettim</li>
-                <li>%95 başarı oranı</li>
+                <li>Aydın Matematik Olimpiyatları - 2025 Yılı Okul Takımı Birinciliği</li>
+                <li>200+ Bireysel Program</li>
+                <li>%95 Başarı Oranı</li>
               </ul>
             </div>
 
@@ -52,7 +51,7 @@ const AboutMe = () => {
               <h3>🎯 Uzmanlık Alanları</h3>
               <ul>
                 <li>Lise Matematik (9-12. Sınıf)</li>
-                <li>Üniversite Hazırlık (TYT/AYT)</li>
+                <li>Sınavlara Hazırlık</li>
                 <li>Matematik Olimpiyatları</li>
                 <li>Özel Ders ve Grup Dersleri</li>
               </ul>
@@ -62,30 +61,11 @@ const AboutMe = () => {
               <h3>📖 Öğretim Yöntemlerim</h3>
               <ul>
                 <li>Görsel ve interaktif öğretim</li>
-                <li>Günlük hayattan örnekler</li>
+                <li>Düzenli Tekrarlar</li>
                 <li>Adım adım problem çözme</li>
                 <li>Kişiselleştirilmiş öğrenme planları</li>
               </ul>
             </div>
-          </div>
-
-          <div className="about-story">
-            <h3>Hikayem</h3>
-            <p>
-              Matematik öğretmenliği kariyerime 20 yıl önce başladım. İlk günden itibaren 
-              amacım, öğrencilerimin matematiği korkulacak bir ders olarak değil, 
-              hayatın temel taşlarından biri olarak görmelerini sağlamaktı.
-            </p>
-            <p>
-              Geçtiğimiz yılda Aydın Matematik Olimpiyatlarına 4 öğrenci hazırladım ve 
-              birincilik elde ettik. Bu başarı, sadece formül ezberletmek yerine 
-              matematiği anlamaya odaklanan öğretim yöntemimin doğruluğunu kanıtladı.
-            </p>
-            <p>
-              Özel dersler, konu anlatım videoları ve PDF notlarla öğrencilerimin 
-              yanında olmaya devam ediyorum. Bu siteyi de daha çok öğrenciye ulaşmak 
-              için kurdum. Umarım sizin için de faydalı olur.
-            </p>
           </div>
         </div>
       </section>
