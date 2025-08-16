@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import './Contact.css';
 
 function Contact() {
@@ -21,13 +22,25 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('');
 
-    // Simulate form submission
-    setTimeout(() => {
+    // EmailJS gönderimi
+    emailjs.send(
+      "service_a32hs6a",   // EmailJS'den aldığın Service ID
+      "template_t8i8sobAC",  // EmailJS'den aldığın Template ID
+      {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      "m8W4J7W0LT1qCzXNK"    // EmailJS Public Key
+    )
+    .then(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
       setFormData({
@@ -37,10 +50,12 @@ function Contact() {
         subject: '',
         message: ''
       });
-      
-      // Reset status after 3 seconds
       setTimeout(() => setSubmitStatus(''), 3000);
-    }, 1500);
+    })
+    .catch(() => {
+      setIsSubmitting(false);
+      setSubmitStatus('error');
+    });
   };
 
   return (
@@ -238,3 +253,4 @@ function Contact() {
 }
 
 export default Contact;
+  

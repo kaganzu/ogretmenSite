@@ -150,7 +150,7 @@ const Books = () => {
       <section className="books-hero">
         <div className="container">
           <h1>📚 Matematik Kitapları ve Notlar</h1>
-          <p>Öğrencilerim için hazırladığım PDF notlar ve kitaplar</p>
+          <p>Öğrencilerim için hazırladığım PDF notlar, kitaplar ve güncel sorularım.</p>
         </div>
       </section>
 
