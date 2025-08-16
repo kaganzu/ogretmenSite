@@ -30,7 +30,7 @@ function Contact() {
     // EmailJS gönderimi
     emailjs.send(
       "service_a32hs6a",   // EmailJS'den aldığın Service ID
-      "template_t8i8sobAC",  // EmailJS'den aldığın Template ID
+      "template_t8i8sob",  // EmailJS'den aldığın Template ID
       {
         name: formData.name,
         email: formData.email,
@@ -253,4 +253,3 @@ function Contact() {
 }
 
 export default Contact;
-  
