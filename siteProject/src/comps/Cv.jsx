@@ -35,6 +35,7 @@ const AboutMe = () => {
                 <li>Matematik Lisans - Ankara Üniversitesi</li>
                 <li>Tezli Yüksek Lisans - Çukurova Üniversitesi</li>
                 <li>Pedagojik Formasyon Sertifikası</li>
+                <li>İleri Seviye İngilizce</li>
               </ul>
             </div>
 
