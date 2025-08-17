@@ -75,8 +75,8 @@ function Contact() {
               <div className="contact-icon">📞</div>
               <h3>Telefon</h3>
               <p>Hızlı iletişim için arayabilirsiniz</p>
-              <a href="tel:+905324613123" className="contact-link">
-                +90 532 461 31 23
+              <a href="tel:+905056249525" className="contact-link">
+                +90 505 624 95 25
               </a>
             </div>
 
@@ -84,7 +84,7 @@ function Contact() {
               <div className="contact-icon">💬</div>
               <h3>WhatsApp</h3>
               <p>Mesaj göndererek bilgi alabilirsiniz</p>
-              <a href="https://wa.me/905324613123" target="_blank" rel="noopener noreferrer" className="contact-link">
+              <a href="https://wa.me/905056249525" target="_blank" rel="noopener noreferrer" className="contact-link">
                 WhatsApp'ta Aç
               </a>
             </div>
@@ -102,7 +102,7 @@ function Contact() {
               <div className="contact-icon">🔗</div>
               <h3>LinkedIn</h3>
               <p>Profesyonel profilimi inceleyin</p>
-              <a href="https://tr.linkedin.com/in/ahmet-idilman-379306185/tr" target="_blank" rel="noopener noreferrer" className="contact-link">
+              <a href="https://www.linkedin.com/in/ahmet-idilman-379306185/" target="_blank" rel="noopener noreferrer" className="contact-link">
                 LinkedIn'e Git
               </a>
             </div>
