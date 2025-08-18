@@ -88,6 +88,7 @@
   width: 120px;   /* sabit genişlik */
   height: 60px;   /* sabit yükseklik */
   margin-top: 0px;
+  margin-bottom: 10px;
   border: 2px solid #3498db;
   background: transparent;
   color: #3498db;
@@ -100,11 +101,11 @@
 .filter-btn-2 {
   width: 120px;   /* sabit genişlik */
   height: 60px;   /* sabit yükseklik */
-  margin-top: 10px;
+  margin-top: 0px;
   border: 2px solid #3498db;
   background: transparent;
   color: #3498db;
-  border-radius: 20px;
+  border-radius: 0px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -317,8 +318,9 @@
   display:none;
   flex-direction: column;
   position: absolute;
-  border-radius: 12px;
+  background-color: transparent;
   width: 100%;
+  z-index: 1000;
 }
 
 .submenu-container:hover .submenu {
@@ -328,6 +330,16 @@
 .submenu .filter-btn-1, .submenu .filter-btn-2 {
   width: 100%;
   text-align: center;
+}
+.filter-btn-1, .filter-btn-2 {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submenu{
+  background-color: white;
 }
 
 /* Responsive Design */

@@ -92,11 +92,28 @@ const Books = () => {
   const activeBooks = books.filter(book => book.status === 'active');
 
   const filteredBooks = activeBooks.filter(book => {
-    const matchesFilter = filter === 'all' || book.category === filter;
-    const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         book.description.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesFilter && matchesSearch;
-  });
+    let matchesFilter = false;
+    if (filter === 'all') {
+    matchesFilter = true;
+  } else if (filter === 'lise') {
+    matchesFilter = 
+      book.category === 'lise' ||
+      ['9', '10', '11', '12'].includes(book.category);
+  } else if (filter === 'universite') {
+    matchesFilter =
+    book.category === 'universite' ||
+    ['ales', 'lgs', 'tyt-ayt'].includes(book.category);
+  }
+  else {
+    matchesFilter = book.category === filter;
+  }
+
+  const matchesSearch =
+    book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    book.description.toLowerCase().includes(searchTerm.toLowerCase());
+
+  return matchesFilter && matchesSearch;
+});
 
   const handleDownload = async (book) => {
     try {
