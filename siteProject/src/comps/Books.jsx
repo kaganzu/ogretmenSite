@@ -141,7 +141,14 @@ const Books = () => {
     const categories = {
       'lise': 'Lise Matematik',
       'universite': 'Üniversite Hazırlık',
-      'olimpiyat': 'Olimpiyat'
+      'olimpiyat': 'Olimpiyat',
+      '9': '9. Sınıf',
+      '10': '10. Sınıf',
+      '11': '11. Sınıf',
+      '12': '12. Sınıf',
+      'lgs': 'LGS',
+      'tyt-ayt': 'TYT-AYT',
+      'ales': 'ALES'
     };
     return categories[category] || category;
   };
