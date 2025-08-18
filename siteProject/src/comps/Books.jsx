@@ -6,6 +6,7 @@ const Books = () => {
   const [books, setBooks] = useState([]);
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+    const [openSubmenu, setOpenSubmenu] = useState(false);
 
   // Örnek veri - gerçek uygulamada API'den gelecek
   const sampleBooks = [
@@ -168,32 +169,78 @@ const Books = () => {
               <span className="search-icon">🔍</span>
             </div>
             
-            <div className="filter-buttons">
-              <button
-                className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-                onClick={() => setFilter('all')}
-              >
-                Tümü
-              </button>
-              <button
-                className={`filter-btn ${filter === 'lise' ? 'active' : ''}`}
-                onClick={() => setFilter('lise')}
-              >
-                Lise
-              </button>
-              <button
-                className={`filter-btn ${filter === 'universite' ? 'active' : ''}`}
-                onClick={() => setFilter('universite')}
-              >
-                Üniversite
-              </button>
-              <button
-                className={`filter-btn ${filter === 'olimpiyat' ? 'active' : ''}`}
-                onClick={() => setFilter('olimpiyat')}
-              >
-                Olimpiyat
-              </button>
-            </div>
+  <div className="filter-buttons">
+  <button
+    className={`filter-btn-1 ${filter === "all" ? "active" : ""}`}
+    onClick={() => setFilter("all")}
+  >
+    Tümü
+  </button>
+
+  <div className="submenu-container">
+    <button
+      className={`filter-btn-1 ${filter === "lise" ? "active" : ""}`}
+      onClick={() => setFilter("lise")}
+    >
+      Lise
+    </button>
+    <div className="submenu">
+      <button
+        className={`filter-btn-2 ${filter === "9" ? "active" : ""}`}
+        onClick={() => setFilter("9")}
+      >
+        9. Sınıf
+      </button>
+      <button
+        className={`filter-btn-2 ${filter === "10" ? "active" : ""}`}
+        onClick={() => setFilter("10")}
+      >
+        10. Sınıf
+      </button>
+      <button
+        className={`filter-btn-2 ${filter === "11" ? "active" : ""}`}
+        onClick={() => setFilter("11")}
+      >
+        11. Sınıf
+      </button>
+      <button
+        className={`filter-btn-2 ${filter === "12" ? "active" : ""}`}
+        onClick={() => setFilter("12")}
+      >
+        12. Sınıf
+      </button>
+    </div>
+  </div>
+  <div className="submenu-container">
+  <button
+    className={`filter-btn-1 ${filter === "universite" ? "active" : ""}`}
+    onClick={() => setFilter("universite")}
+  >
+    Sınavlara Hazırlık
+  </button>
+   <div className="submenu">
+      <button
+        className={`filter-btn-2 ${filter === "lgs" ? "active" : ""}`}
+        onClick={() => setFilter("lgs")}
+      >
+        LGS
+      </button>
+      <button
+        className={`filter-btn-2 ${filter === "tyt-ayt" ? "active" : ""}`}
+        onClick={() => setFilter("tyt-ayt")}
+      >
+        TYT-AYT
+      </button>
+      <button
+        className={`filter-btn-2 ${filter === "ales" ? "active" : ""}`}
+        onClick={() => setFilter("ales")}
+      >
+        ALES
+      </button>
+    </div>
+    </div>
+</div>
+
           </div>
 
           {/* Books Grid */}

@@ -84,24 +84,40 @@
   flex-wrap: wrap;
 }
 
-.filter-btn {
-  padding: 10px 20px;
+.filter-btn-1 {
+  width: 120px;   /* sabit genişlik */
+  height: 60px;   /* sabit yükseklik */
+  margin-top: 0px;
   border: 2px solid #3498db;
   background: transparent;
   color: #3498db;
   border-radius: 20px;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-align: center;
+}
+.filter-btn-2 {
+  width: 120px;   /* sabit genişlik */
+  height: 60px;   /* sabit yükseklik */
+  margin-top: 10px;
+  border: 2px solid #3498db;
+  background: transparent;
+  color: #3498db;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
-.filter-btn:hover {
+.filter-btn-1:hover, .filter-btn-2:hover {
   background: #3498db;
   color: white;
   transform: translateY(-2px);
 }
 
-.filter-btn.active {
+.filter-btn-1.active, .filter-btn-2.active {
   background: #3498db;
   color: white;
   box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
@@ -291,6 +307,27 @@
   font-size: 2rem;
   font-weight: 700;
   color: #3498db;
+}
+.submenu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.submenu {
+  display:none;
+  flex-direction: column;
+  position: absolute;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.submenu-container:hover .submenu {
+  display: flex;
+}
+
+.submenu .filter-btn-1, .submenu .filter-btn-2 {
+  width: 100%;
+  text-align: center;
 }
 
 /* Responsive Design */

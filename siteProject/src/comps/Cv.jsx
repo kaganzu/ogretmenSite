@@ -13,7 +13,7 @@ const AboutMe = () => {
             </div>
             <div className="about-text">
               <h1>Ahmet İdilman</h1>
-              <h2>Matematik Öğretmeni</h2>
+              
               <p className="about-intro">
                 Ankara Üniversitesi'nden mezun olduktan sonra akademik yolculuğuma Çukurova Üniversitesi'nde tezli yüksek lisans programı
                  ile devam ettim. Kariyerim boyunca özel öğretim kurumlarında ve devlet okullarında matematik öğretmeni olarak görev aldım.
