@@ -231,6 +231,13 @@ const Admin = () => {
                     <option value="lise">Lise Matematik</option>
                     <option value="universite">Üniversite Hazırlık</option>
                     <option value="olimpiyat">Olimpiyat</option>
+                    <option value="9">9. Sınıf</option>
+                    <option value="10">10. Sınıf</option>
+                    <option value="11">11. Sınıf</option>
+                    <option value="12">12. Sınıf</option>
+                    <option value="lgs">LGS</option>
+                    <option value="tyt-ayt">TYT-AYT</option>
+                    <option value="ales">ALES</option>
                   </select>
                 </div>
 
