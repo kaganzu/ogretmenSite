@@ -87,23 +87,23 @@ const Home = () => {
           <h2 className="section-title">Öğrenci Yorumları</h2>
           <div className="testimonials-grid">
             <div className="testimonial-card">
-              <p>"Ahmet Hoca sayesinde matematiği sevmeye başladım. Artık formülleri ezberlemek yerine anlıyorum."</p>
+              <p>"Ahmet Hocam sayesinde matematiği sevmeye başladım. Artık formülleri ezberlemek yerine anlıyorum."</p>
               <div className="testimonial-author">
-                <strong>Ayşe K.</strong>
-                <span>12. Sınıf Öğrencisi</span>
+                <strong>Derin S.</strong>
+                <span>LGS Öğrencisi</span>
               </div>
             </div>
             <div className="testimonial-card">
-              <p>"Olimpiyat sınavında birinci oldum. Ahmet Hoca'nın özel programı gerçekten çok etkiliydi."</p>
+              <p>"Aydın Olimpiyat sınavında birinci olduk. Ahmet Hocamın hazırladığı program çok yardımcı oldu."</p>
               <div className="testimonial-author">
-                <strong>Mehmet A.</strong>
-                <span>Olimpiyat Birincisi</span>
+                <strong>Hüseyin A. Ozan B. Fevzi S.</strong>
+                <span>Olimpiyat Birincileri</span>
               </div>
             </div>
             <div className="testimonial-card">
-              <p>"Üniversite sınavında matematikten 40 soruda 38 doğru yaptım. Teşekkürler Ahmet Hoca!"</p>
+              <p>"Ahmet Hoca sayesinde üniversite sınavında matematikten 40 soruda 38 doğru yaptım."</p>
               <div className="testimonial-author">
-                <strong>Zeynep B.</strong>
+                <strong>Eren İ.</strong>
                 <span>Üniversite Öğrencisi</span>
               </div>
             </div>

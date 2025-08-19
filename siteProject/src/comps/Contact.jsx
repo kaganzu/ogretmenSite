@@ -108,48 +108,7 @@ function Contact() {
             </div>
           </div>
 
-          {/* Info Cards */}
-          <div className="contact-info">
-            <div className="info-card">
-              <h3>📚 Ders Programı</h3>
-              <div className="schedule">
-                <div className="schedule-item">
-                  <strong>Pazartesi - Cuma:</strong>
-                  <span>09:00 - 18:00</span>
-                </div>
-                <div className="schedule-item">
-                  <strong>Cumartesi:</strong>
-                  <span>09:00 - 15:00</span>
-                </div>
-                <div className="schedule-item">
-                  <strong>Pazar:</strong>
-                  <span>Kapalı</span>
-                </div>
-              </div>
-              <div className="schedule-note">
-                <p>⏰ Acil durumlar için WhatsApp'tan mesaj atabilirsiniz</p>
-              </div>
-            </div>
-
-            <div className="info-card">
-              <h3>📍 Konum & Hizmetler</h3>
-              <div className="location-info">
-                <p><strong>Aydın, Türkiye</strong></p>
-                <p>📍 Yüz yüze dersler için randevu alın</p>
-                <p>💻 Online dersler de mevcuttur</p>
-                <p>🚗 Belirli mesafelerde ev dersleri</p>
-              </div>
-              <div className="service-types">
-                <h4>Hizmet Türleri:</h4>
-                <ul>
-                  <li>Birebir özel dersler</li>
-                  <li>Küçük grup dersleri (2-4 kişi)</li>
-                  <li>Online video dersler</li>
-                  <li>Olimpiyat hazırlık programları</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+         
 
           {/* Contact Form */}
           <div className="contact-form">
