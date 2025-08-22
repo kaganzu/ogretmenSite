@@ -101,7 +101,7 @@ const Home = () => {
               </div>
             </div>
             <div className="testimonial-card">
-              <p>"Ahmet Hoca sayesinde üniversite sınavında matematikten 40 soruda 38 doğru yaptım."</p>
+              <p>"Ahmet Hocam ile birlikte <br /> programlı çalışarak <br />38 net yaptım."</p>
               <div className="testimonial-author">
                 <strong>Eren İ.</strong>
                 <span>Üniversite Öğrencisi</span>

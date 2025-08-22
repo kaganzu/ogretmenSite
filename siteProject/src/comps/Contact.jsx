@@ -107,9 +107,6 @@ function Contact() {
               </a>
             </div>
           </div>
-
-         
-
           {/* Contact Form */}
           <div className="contact-form">
             <h3>📝 Hızlı Mesaj Gönderin</h3>
