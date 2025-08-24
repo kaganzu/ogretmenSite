@@ -63,7 +63,7 @@ function Contact() {
       <section className="contact-hero">
         <div className="container">
           <h1>İletişim</h1>
-          <p>Matematik öğrenmek için benimle iletişime geçin</p>
+          <p>Detaylı bilgi almak için iletişime geçebilirsiniz.</p>
         </div>
       </section>
 
