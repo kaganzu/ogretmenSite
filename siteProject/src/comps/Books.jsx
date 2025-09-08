@@ -296,10 +296,7 @@ const Books = () => {
                       className="download-btn"
                       onClick={() => handleDownload(book)}
                     >
-                      📥 İndir
-                    </button>
-                    <button className="preview-btn">
-                      👁️ Önizle
+                       İndir
                     </button>
                   </div>
                 </div>
