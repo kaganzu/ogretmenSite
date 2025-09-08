@@ -28,20 +28,6 @@ const Admin = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  // Örnek veri
-  const sampleBooks = [
-    {
-      id: 1,
-      title: "Lise Matematik Konu Anlatımı",
-      category: "lise",
-      description: "9-12. sınıf matematik konularının detaylı anlatımı",
-      fileSize: "2.5 MB",
-      uploadDate: "2024-01-15",
-      downloads: 1250,
-      status: "active",
-      thumbnail: "📚"
-    }
-  ];
 
   useEffect(() => {
     // Firebase'den kitapları yükle
@@ -158,13 +144,18 @@ const Admin = () => {
     return thumbnails[category] || '📄';
   };
 
-  const handleDelete = (id) => {
-    if (window.confirm('Bu kitabı silmek istediğinizden emin misiniz?')) {
-      const updatedBooks = books.filter(book => book.id !== id);
-      setBooks(updatedBooks);
-      localStorage.setItem('books', JSON.stringify(updatedBooks));
+  const handleDelete = async (id) => {
+  if (window.confirm('Bu kitabı silmek istediğinizden emin misiniz?')) {
+    const result = await booksService.deleteBook(id);
+    if (result.success) {
+      // Firestore’dan silindi, state’i de güncelle
+      setBooks(books.filter(book => book.id !== id));
+    } else {
+      alert("Silme başarısız: " + result.error);
+      console.error("Delete error:", result.error);
     }
-  };
+  }
+};
 
   const handleStatusToggle = (id) => {
     const updatedBooks = books.map(book => 

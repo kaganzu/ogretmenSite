@@ -133,7 +133,7 @@ export const booksService = {
 
   // Upload file to Cloudinary
   // Upload file to Cloudinary
-async uploadFile(file, fileName) {
+async uploadFile(file) {
   try {
     const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
     const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;

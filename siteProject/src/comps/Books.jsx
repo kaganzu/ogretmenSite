@@ -6,7 +6,6 @@ const Books = () => {
   const [books, setBooks] = useState([]);
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
-    const [openSubmenu, setOpenSubmenu] = useState(false);
 
   // Örnek veri - gerçek uygulamada API'den gelecek
   const sampleBooks = [
